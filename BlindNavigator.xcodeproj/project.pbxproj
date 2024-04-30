@@ -1,0 +1,467 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E53D27D2BE0E633005F9166 /* BlindNavigatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D27C2BE0E633005F9166 /* BlindNavigatorApp.swift */; };
+		0E53D27F2BE0E633005F9166 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D27E2BE0E633005F9166 /* ContentView.swift */; };
+		0E53D2812BE0E634005F9166 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E53D2802BE0E634005F9166 /* Assets.xcassets */; };
+		0E53D2842BE0E634005F9166 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E53D2832BE0E634005F9166 /* Preview Assets.xcassets */; };
+		0E53D2A12BE0E659005F9166 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D28C2BE0E650005F9166 /* HomeScreen.swift */; };
+		0E53D2A22BE0E659005F9166 /* VideoCaptureViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E53D28E2BE0E650005F9166 /* VideoCaptureViewController.storyboard */; };
+		0E53D2A32BE0E659005F9166 /* VideoCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D28F2BE0E650005F9166 /* VideoCaptureViewController.swift */; };
+		0E53D2A42BE0E659005F9166 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D2902BE0E650005F9166 /* VideoCapture.swift */; };
+		0E53D2A52BE0E659005F9166 /* VideoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D2912BE0E650005F9166 /* VideoCaptureView.swift */; };
+		0E53D2A62BE0E659005F9166 /* yolov8x.pt in Resources */ = {isa = PBXBuildFile; fileRef = 0E53D2932BE0E659005F9166 /* yolov8x.pt */; };
+		0E53D2A72BE0E659005F9166 /* yolov8l.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D2942BE0E659005F9166 /* yolov8l.mlpackage */; };
+		0E53D2A82BE0E659005F9166 /* download_models.py in Resources */ = {isa = PBXBuildFile; fileRef = 0E53D2952BE0E659005F9166 /* download_models.py */; };
+		0E53D2A92BE0E659005F9166 /* yolov8n.pt in Resources */ = {isa = PBXBuildFile; fileRef = 0E53D2962BE0E659005F9166 /* yolov8n.pt */; };
+		0E53D2AA2BE0E659005F9166 /* yolov8s.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D2972BE0E659005F9166 /* yolov8s.mlpackage */; };
+		0E53D2AB2BE0E659005F9166 /* yolov8x.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D2982BE0E659005F9166 /* yolov8x.mlpackage */; };
+		0E53D2AC2BE0E659005F9166 /* yolov8s.pt in Resources */ = {isa = PBXBuildFile; fileRef = 0E53D2992BE0E659005F9166 /* yolov8s.pt */; };
+		0E53D2AD2BE0E659005F9166 /* yolov8m.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D29A2BE0E659005F9166 /* yolov8m.mlpackage */; };
+		0E53D2AE2BE0E659005F9166 /* yolov8l.pt in Resources */ = {isa = PBXBuildFile; fileRef = 0E53D29B2BE0E659005F9166 /* yolov8l.pt */; };
+		0E53D2AF2BE0E659005F9166 /* yolov8n.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D29C2BE0E659005F9166 /* yolov8n.mlpackage */; };
+		0E53D2B02BE0E659005F9166 /* yolov8m.pt in Resources */ = {isa = PBXBuildFile; fileRef = 0E53D29D2BE0E659005F9166 /* yolov8m.pt */; };
+		0E53D2B12BE0E659005F9166 /* ThresholdProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D29F2BE0E659005F9166 /* ThresholdProvider.swift */; };
+		0E53D2B22BE0E659005F9166 /* BoundingBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D2A02BE0E659005F9166 /* BoundingBoxView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0E53D2792BE0E633005F9166 /* BlindNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlindNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E53D27C2BE0E633005F9166 /* BlindNavigatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlindNavigatorApp.swift; sourceTree = "<group>"; };
+		0E53D27E2BE0E633005F9166 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0E53D2802BE0E634005F9166 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0E53D2832BE0E634005F9166 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0E53D28C2BE0E650005F9166 /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		0E53D28E2BE0E650005F9166 /* VideoCaptureViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VideoCaptureViewController.storyboard; sourceTree = "<group>"; };
+		0E53D28F2BE0E650005F9166 /* VideoCaptureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCaptureViewController.swift; sourceTree = "<group>"; };
+		0E53D2902BE0E650005F9166 /* VideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
+		0E53D2912BE0E650005F9166 /* VideoCaptureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCaptureView.swift; sourceTree = "<group>"; };
+		0E53D2932BE0E659005F9166 /* yolov8x.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yolov8x.pt; sourceTree = "<group>"; };
+		0E53D2942BE0E659005F9166 /* yolov8l.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolov8l.mlpackage; sourceTree = "<group>"; };
+		0E53D2952BE0E659005F9166 /* download_models.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = download_models.py; sourceTree = "<group>"; };
+		0E53D2962BE0E659005F9166 /* yolov8n.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yolov8n.pt; sourceTree = "<group>"; };
+		0E53D2972BE0E659005F9166 /* yolov8s.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolov8s.mlpackage; sourceTree = "<group>"; };
+		0E53D2982BE0E659005F9166 /* yolov8x.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolov8x.mlpackage; sourceTree = "<group>"; };
+		0E53D2992BE0E659005F9166 /* yolov8s.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yolov8s.pt; sourceTree = "<group>"; };
+		0E53D29A2BE0E659005F9166 /* yolov8m.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolov8m.mlpackage; sourceTree = "<group>"; };
+		0E53D29B2BE0E659005F9166 /* yolov8l.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yolov8l.pt; sourceTree = "<group>"; };
+		0E53D29C2BE0E659005F9166 /* yolov8n.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolov8n.mlpackage; sourceTree = "<group>"; };
+		0E53D29D2BE0E659005F9166 /* yolov8m.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yolov8m.pt; sourceTree = "<group>"; };
+		0E53D29F2BE0E659005F9166 /* ThresholdProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThresholdProvider.swift; sourceTree = "<group>"; };
+		0E53D2A02BE0E659005F9166 /* BoundingBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBoxView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0E53D2762BE0E633005F9166 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E53D2702BE0E633005F9166 = {
+			isa = PBXGroup;
+			children = (
+				0E53D27B2BE0E633005F9166 /* BlindNavigator */,
+				0E53D27A2BE0E633005F9166 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0E53D27A2BE0E633005F9166 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E53D2792BE0E633005F9166 /* BlindNavigator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0E53D27B2BE0E633005F9166 /* BlindNavigator */ = {
+			isa = PBXGroup;
+			children = (
+				0E53D28A2BE0E650005F9166 /* Component */,
+				0E53D2922BE0E659005F9166 /* Models */,
+				0E53D29E2BE0E659005F9166 /* Utilities */,
+				0E53D27C2BE0E633005F9166 /* BlindNavigatorApp.swift */,
+				0E53D27E2BE0E633005F9166 /* ContentView.swift */,
+				0E53D2802BE0E634005F9166 /* Assets.xcassets */,
+				0E53D2822BE0E634005F9166 /* Preview Content */,
+			);
+			path = BlindNavigator;
+			sourceTree = "<group>";
+		};
+		0E53D2822BE0E634005F9166 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0E53D2832BE0E634005F9166 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0E53D28A2BE0E650005F9166 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				0E53D28B2BE0E650005F9166 /* Home */,
+				0E53D28D2BE0E650005F9166 /* VideoCapture */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		0E53D28B2BE0E650005F9166 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0E53D28C2BE0E650005F9166 /* HomeScreen.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0E53D28D2BE0E650005F9166 /* VideoCapture */ = {
+			isa = PBXGroup;
+			children = (
+				0E53D28E2BE0E650005F9166 /* VideoCaptureViewController.storyboard */,
+				0E53D28F2BE0E650005F9166 /* VideoCaptureViewController.swift */,
+				0E53D2902BE0E650005F9166 /* VideoCapture.swift */,
+				0E53D2912BE0E650005F9166 /* VideoCaptureView.swift */,
+			);
+			path = VideoCapture;
+			sourceTree = "<group>";
+		};
+		0E53D2922BE0E659005F9166 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0E53D2932BE0E659005F9166 /* yolov8x.pt */,
+				0E53D2942BE0E659005F9166 /* yolov8l.mlpackage */,
+				0E53D2952BE0E659005F9166 /* download_models.py */,
+				0E53D2962BE0E659005F9166 /* yolov8n.pt */,
+				0E53D2972BE0E659005F9166 /* yolov8s.mlpackage */,
+				0E53D2982BE0E659005F9166 /* yolov8x.mlpackage */,
+				0E53D2992BE0E659005F9166 /* yolov8s.pt */,
+				0E53D29A2BE0E659005F9166 /* yolov8m.mlpackage */,
+				0E53D29B2BE0E659005F9166 /* yolov8l.pt */,
+				0E53D29C2BE0E659005F9166 /* yolov8n.mlpackage */,
+				0E53D29D2BE0E659005F9166 /* yolov8m.pt */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0E53D29E2BE0E659005F9166 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0E53D29F2BE0E659005F9166 /* ThresholdProvider.swift */,
+				0E53D2A02BE0E659005F9166 /* BoundingBoxView.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0E53D2782BE0E633005F9166 /* BlindNavigator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E53D2872BE0E634005F9166 /* Build configuration list for PBXNativeTarget "BlindNavigator" */;
+			buildPhases = (
+				0E53D2752BE0E633005F9166 /* Sources */,
+				0E53D2762BE0E633005F9166 /* Frameworks */,
+				0E53D2772BE0E633005F9166 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BlindNavigator;
+			productName = BlindNavigator;
+			productReference = 0E53D2792BE0E633005F9166 /* BlindNavigator.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0E53D2712BE0E633005F9166 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					0E53D2782BE0E633005F9166 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = 0E53D2742BE0E633005F9166 /* Build configuration list for PBXProject "BlindNavigator" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0E53D2702BE0E633005F9166;
+			productRefGroup = 0E53D27A2BE0E633005F9166 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0E53D2782BE0E633005F9166 /* BlindNavigator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0E53D2772BE0E633005F9166 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E53D2AC2BE0E659005F9166 /* yolov8s.pt in Resources */,
+				0E53D2AE2BE0E659005F9166 /* yolov8l.pt in Resources */,
+				0E53D2842BE0E634005F9166 /* Preview Assets.xcassets in Resources */,
+				0E53D2A62BE0E659005F9166 /* yolov8x.pt in Resources */,
+				0E53D2812BE0E634005F9166 /* Assets.xcassets in Resources */,
+				0E53D2B02BE0E659005F9166 /* yolov8m.pt in Resources */,
+				0E53D2A92BE0E659005F9166 /* yolov8n.pt in Resources */,
+				0E53D2A22BE0E659005F9166 /* VideoCaptureViewController.storyboard in Resources */,
+				0E53D2A82BE0E659005F9166 /* download_models.py in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0E53D2752BE0E633005F9166 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E53D2AA2BE0E659005F9166 /* yolov8s.mlpackage in Sources */,
+				0E53D27F2BE0E633005F9166 /* ContentView.swift in Sources */,
+				0E53D2B22BE0E659005F9166 /* BoundingBoxView.swift in Sources */,
+				0E53D2A42BE0E659005F9166 /* VideoCapture.swift in Sources */,
+				0E53D2AF2BE0E659005F9166 /* yolov8n.mlpackage in Sources */,
+				0E53D27D2BE0E633005F9166 /* BlindNavigatorApp.swift in Sources */,
+				0E53D2A72BE0E659005F9166 /* yolov8l.mlpackage in Sources */,
+				0E53D2B12BE0E659005F9166 /* ThresholdProvider.swift in Sources */,
+				0E53D2AB2BE0E659005F9166 /* yolov8x.mlpackage in Sources */,
+				0E53D2AD2BE0E659005F9166 /* yolov8m.mlpackage in Sources */,
+				0E53D2A52BE0E659005F9166 /* VideoCaptureView.swift in Sources */,
+				0E53D2A32BE0E659005F9166 /* VideoCaptureViewController.swift in Sources */,
+				0E53D2A12BE0E659005F9166 /* HomeScreen.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0E53D2852BE0E634005F9166 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0E53D2862BE0E634005F9166 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0E53D2882BE0E634005F9166 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BlindNavigator/Preview Content\"";
+				DEVELOPMENT_TEAM = 47CKZC7YD4;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Ultralytics YOLO uses your camera to detect objects around you and display results in realtime on your screen 🚀";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "To save results to Photo Library.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To see images in Photo Library and apply AI object detection to them.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = au.edu.uts.BlindNavigator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0E53D2892BE0E634005F9166 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BlindNavigator/Preview Content\"";
+				DEVELOPMENT_TEAM = 47CKZC7YD4;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Ultralytics YOLO uses your camera to detect objects around you and display results in realtime on your screen 🚀";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "To save results to Photo Library.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To see images in Photo Library and apply AI object detection to them.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = au.edu.uts.BlindNavigator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0E53D2742BE0E633005F9166 /* Build configuration list for PBXProject "BlindNavigator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E53D2852BE0E634005F9166 /* Debug */,
+				0E53D2862BE0E634005F9166 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0E53D2872BE0E634005F9166 /* Build configuration list for PBXNativeTarget "BlindNavigator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E53D2882BE0E634005F9166 /* Debug */,
+				0E53D2892BE0E634005F9166 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0E53D2712BE0E633005F9166 /* Project object */;
+}

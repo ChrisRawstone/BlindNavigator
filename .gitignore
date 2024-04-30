@@ -89,3 +89,6 @@ fastlane/test_output
 
 iOSInjectionProject/
 BlindNavigator/BlindNavigator/Models
+BlindNavigator/BlindNavigator/Models
+*.pt
+BlindNavigator/.DS_Store
