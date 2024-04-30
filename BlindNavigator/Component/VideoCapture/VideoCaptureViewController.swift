@@ -1,15 +1,9 @@
-//  Ultralytics YOLO 🚀 - AGPL-3.0 License
 //
-//  Main View Controller for Ultralytics YOLO App
-//  This file is part of the Ultralytics YOLO app, enabling real-time object detection using YOLOv8 models on iOS devices.
-//  Licensed under AGPL-3.0. For commercial use, refer to Ultralytics licensing: https://ultralytics.com/license
-//  Access the source code: https://github.com/ultralytics/yolo-ios-app
+//  VideoCaptureViewController.swift
+//  assessment2
 //
-//  This ViewController manages the app's main screen, handling video capture, model selection, detection visualization,
-//  and user interactions. It sets up and controls the video preview layer, handles model switching via a segmented control,
-//  manages UI elements like sliders for confidence and IoU thresholds, and displays detection results on the video feed.
-//  It leverages CoreML, Vision, and AVFoundation frameworks to perform real-time object detection and to interface with
-//  the device's camera.
+//  Created by chuan on 30/4/2024.
+//
 
 import AVFoundation
 import CoreMedia
@@ -19,7 +13,7 @@ import Vision
 
 var mlModel = try! yolov8m(configuration: .init()).model
 
-class ViewController: UIViewController {
+class VideoCaptureViewController: UIViewController {
     @IBOutlet var videoPreview: UIView!
     @IBOutlet var View0: UIView!
     @IBOutlet var segmentedControl: UISegmentedControl!
@@ -31,6 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var labelFPS: UILabel!
     @IBOutlet weak var labelZoom: UILabel!
+    
     @IBOutlet weak var labelVersion: UILabel!
     @IBOutlet weak var labelSlider: UILabel!
     @IBOutlet weak var labelSliderConf: UILabel!
@@ -165,7 +160,7 @@ class ViewController: UIViewController {
 
     func setLabels() {
         self.labelName.text = "YOLOv8m"
-        self.labelVersion.text = "Version " + UserDefaults.standard.string(forKey: "app_version")!
+        self.labelVersion.text = "Version " 
     }
 
     @IBAction func playButton(_ sender: Any) {
@@ -260,9 +255,9 @@ class ViewController: UIViewController {
             // .hd4K3840x2160 or .photo (4032x3024)  Warning: 4k may not work on all devices i.e. 2019 iPod
             if success {
                 
-//                
+//
 //                let device = self.videoCapture.captureDevice
-//                
+//
 //                do {
 //                    try device.lockForConfiguration()
 //                    device.activeVideoMinFrameDuration = CMTime(value: 1, timescale: 10)
@@ -570,14 +565,14 @@ class ViewController: UIViewController {
     }  // Pinch to Zoom Start ------------------------------------------------------------------------------------------
 }  // ViewController class End
 
-extension ViewController: VideoCaptureDelegate {
+extension VideoCaptureViewController: VideoCaptureDelegate {
     func videoCapture(_ capture: VideoCapture, didCaptureVideoFrame sampleBuffer: CMSampleBuffer) {
         predict(sampleBuffer: sampleBuffer)
     }
 }
 
 // Programmatically save image
-extension ViewController: AVCapturePhotoCaptureDelegate {
+extension VideoCaptureViewController: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let error = error {
             print("error occurred : \(error.localizedDescription)")
@@ -596,5 +591,15 @@ extension ViewController: AVCapturePhotoCaptureDelegate {
     }
 }
 
+extension UIViewController {
+    class func storyboardInstance() -> Self {
+        return storyboardInstance(type: self)
+    }
 
+    private class func storyboardInstance<T>(type: T.Type) -> T {
+        let controllerName = String(describing: self)
+        let vc = UIStoryboard(name: controllerName, bundle: nil).instantiateInitialViewController()
+        return vc as! T
+    }
+}
 
