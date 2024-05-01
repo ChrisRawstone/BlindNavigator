@@ -9,8 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VideoCaptureView()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        ZStack {
+          //  HomeScreen()
+            
+            VideoCaptureView()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

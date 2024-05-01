@@ -68,8 +68,14 @@ class VideoCaptureViewController: UIViewController {
         startVideo()
 
         // setModel()
+        hideViews()
     }
 
+    func hideViews() {
+        segmentedControl.isHidden = true
+        
+    }
+    
     @IBAction func vibrate(_ sender: Any) {
         selection.selectionChanged()
     }

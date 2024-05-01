@@ -29,6 +29,8 @@
 		0E53D2B02BE0E659005F9166 /* yolov8m.pt in Resources */ = {isa = PBXBuildFile; fileRef = 0E53D29D2BE0E659005F9166 /* yolov8m.pt */; };
 		0E53D2B12BE0E659005F9166 /* ThresholdProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D29F2BE0E659005F9166 /* ThresholdProvider.swift */; };
 		0E53D2B22BE0E659005F9166 /* BoundingBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D2A02BE0E659005F9166 /* BoundingBoxView.swift */; };
+		0E53D2B52BE0F36F005F9166 /* CaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D2B42BE0F36F005F9166 /* CaptureView.swift */; };
+		0E53D2B72BE0F8AB005F9166 /* CaptureViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E53D2B62BE0F8AB005F9166 /* CaptureViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		0E53D29D2BE0E659005F9166 /* yolov8m.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yolov8m.pt; sourceTree = "<group>"; };
 		0E53D29F2BE0E659005F9166 /* ThresholdProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThresholdProvider.swift; sourceTree = "<group>"; };
 		0E53D2A02BE0E659005F9166 /* BoundingBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBoxView.swift; sourceTree = "<group>"; };
+		0E53D2B42BE0F36F005F9166 /* CaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureView.swift; sourceTree = "<group>"; };
+		0E53D2B62BE0F8AB005F9166 /* CaptureViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CaptureViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,7 @@
 		0E53D28B2BE0E650005F9166 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				0E53D2B32BE0F33B005F9166 /* View */,
 				0E53D28C2BE0E650005F9166 /* HomeScreen.swift */,
 			);
 			path = Home;
@@ -159,6 +164,15 @@
 				0E53D2A02BE0E659005F9166 /* BoundingBoxView.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		0E53D2B32BE0F33B005F9166 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E53D2B42BE0F36F005F9166 /* CaptureView.swift */,
+				0E53D2B62BE0F8AB005F9166 /* CaptureViewController.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E53D2B72BE0F8AB005F9166 /* CaptureViewController.storyboard in Resources */,
 				0E53D2AC2BE0E659005F9166 /* yolov8s.pt in Resources */,
 				0E53D2AE2BE0E659005F9166 /* yolov8l.pt in Resources */,
 				0E53D2842BE0E634005F9166 /* Preview Assets.xcassets in Resources */,
@@ -247,6 +262,7 @@
 				0E53D2A72BE0E659005F9166 /* yolov8l.mlpackage in Sources */,
 				0E53D2B12BE0E659005F9166 /* ThresholdProvider.swift in Sources */,
 				0E53D2AB2BE0E659005F9166 /* yolov8x.mlpackage in Sources */,
+				0E53D2B52BE0F36F005F9166 /* CaptureView.swift in Sources */,
 				0E53D2AD2BE0E659005F9166 /* yolov8m.mlpackage in Sources */,
 				0E53D2A52BE0E659005F9166 /* VideoCaptureView.swift in Sources */,
 				0E53D2A32BE0E659005F9166 /* VideoCaptureViewController.swift in Sources */,
