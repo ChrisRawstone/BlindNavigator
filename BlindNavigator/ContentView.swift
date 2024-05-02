@@ -9,9 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VideoCaptureView()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        //        VideoCaptureView()
+        //            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        //    }
+        GPSContentView()
     }
+    
 }
 
 #Preview {

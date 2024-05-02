@@ -11,7 +11,8 @@ import SwiftUI
 struct BlindNavigatorApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            GPSContentView()
         }
     }
 }
