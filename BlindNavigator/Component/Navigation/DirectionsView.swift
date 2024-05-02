@@ -7,10 +7,10 @@
 import SwiftUI
 
 
-struct DirectionsApp: App {
-  var body: some Scene {
-    WindowGroup {
-      GPSContentView()
-    }
-  }
-}
+//struct DirectionsApp: App {
+//  var body: some Scene {
+//    WindowGroup {
+//      GPSContentView()
+//    }
+//  }
+//}
