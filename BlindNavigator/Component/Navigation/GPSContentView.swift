@@ -2,7 +2,6 @@ import SwiftUI
 import MapKit
 import AVFoundation
 
-
 struct MapView: UIViewRepresentable {
     @ObservedObject var locationManager: LocationManager
     @Binding var directions: [MKRoute.Step]
@@ -49,7 +48,6 @@ struct MapView: UIViewRepresentable {
         }
     }
 }
-import CoreLocation
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var locationManager = CLLocationManager()
@@ -102,6 +100,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 struct GPSContentView: View {
     @StateObject private var locationManager = LocationManager()
     @State private var searchText = ""
+    @State private var showDirections = false  // State to control visibility of the directions list
 
     var body: some View {
         NavigationView {
@@ -111,6 +110,23 @@ struct GPSContentView: View {
                     .padding()
                 MapView(locationManager: locationManager, directions: $locationManager.directions)
                 Spacer()
+                Button("Show Directions") {
+                    showDirections.toggle()
+                }
+                .disabled(locationManager.directions.isEmpty)
+                .padding()
+            }
+            .sheet(isPresented: $showDirections) {
+                VStack(spacing: 0) {
+                    Text("Directions")
+                        .font(.largeTitle)
+                        .bold()
+                        .padding()
+                    Divider().background(Color.blue)
+                    List(locationManager.directions, id: \.instructions) { step in
+                        Text(step.instructions).padding()
+                    }
+                }
             }
             .navigationBarTitle("Map Directions")
         }
@@ -127,5 +143,4 @@ struct GPSContentView: View {
             self.locationManager.getDirections(to: mapItem)
         }
     }
-
 }
