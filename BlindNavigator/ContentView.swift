@@ -19,22 +19,38 @@ extension CLLocationCoordinate2D {
 
 struct ContentView: View {
     @State var hideVideoCaptureView = true
+    @State private var showScreen = false
     
     var body: some View {
-        VStack {
-            ZStack {
-                Color.white
-            
-                if hideVideoCaptureView == false {
-                    VideoCaptureView()
+        ZStack(alignment: .topLeading) {
+            VStack {
+                ZStack {
+                    Color.white
+                
+                    if hideVideoCaptureView == false {
+                        VideoCaptureView()
+                    }
+                    else {
+                        ProgressView()
+                    }
                 }
-                else {
-                    ProgressView()
-                }
+                
+                GPSContentView()
             }
             
-            GPSContentView()
+            Button {
+                showScreen = true
+            } label: {
+               Image(systemName: "xmark.circle.fill")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 30, height: 30)
+            }
+            .padding()
         }
+        .sheet(isPresented: $showScreen, content: {
+            Text("Hello")
+        })
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 hideVideoCaptureView = false

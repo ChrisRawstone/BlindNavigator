@@ -90,7 +90,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             }
         }
     }
-
+    
     private func speak(step: MKRoute.Step) {
         let instruction = "In \(step.distance) meters, \(step.instructions)"
         let speechUtterance = AVSpeechUtterance(string: instruction)
@@ -153,7 +153,16 @@ struct GPSContentView: View {
         directions.calculate { (response, error) in
             if let route = response?.routes.first {
                 self.route = route
+                for step in route.steps {
+                    self.speak(step: step)
+                }
             }
         }
+    }
+    
+    private func speak(step: MKRoute.Step) {
+        let instruction = "In \(step.distance) meters, \(step.instructions)"
+        let speechUtterance = AVSpeechUtterance(string: instruction)
+        speechSynthesizer.speak(speechUtterance)
     }
 }
