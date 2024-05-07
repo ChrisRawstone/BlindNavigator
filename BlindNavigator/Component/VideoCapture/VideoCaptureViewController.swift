@@ -11,7 +11,7 @@ import CoreML
 import UIKit
 import Vision
 
-let synthesizer = AVSpeechSynthesizer()
+//let synthesizer = AVSpeechSynthesizer()
 
 var mlModel = try! yolov8m(configuration: .init()).model
 
@@ -83,15 +83,19 @@ class VideoCaptureViewController: UIViewController {
     }
     
     @objc func describeObjectsIfNeeded() {
-        
         let objects = lastAppearedObjects.unique.prefix(3)
         let text = objects.joined(separator: ", ")
         let utterance = AVSpeechUtterance(string: "There's \(text) in front of you")
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         utterance.rate = 0.4
-
-        synthesizer.speak(utterance)
         
+        if speechSynthesizer.isSpeaking == false {
+            speechSynthesizer.speak(utterance)
+        }
+        else {
+            print("Objects are not desribed due to speechSyn is busy")
+        }
+    
         lastAppearedObjects.removeAll()
     }
     

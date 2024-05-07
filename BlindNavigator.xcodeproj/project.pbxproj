@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0E1D332BE0F61400CDA551 /* DirectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0E1D312BE0F61400CDA551 /* DirectionsView.swift */; };
+		0E0E1D342BE0F61400CDA551 /* GPSContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0E1D322BE0F61400CDA551 /* GPSContentView.swift */; };
 		0E53D27D2BE0E633005F9166 /* BlindNavigatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D27C2BE0E633005F9166 /* BlindNavigatorApp.swift */; };
 		0E53D27F2BE0E633005F9166 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D27E2BE0E633005F9166 /* ContentView.swift */; };
 		0E53D2812BE0E634005F9166 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E53D2802BE0E634005F9166 /* Assets.xcassets */; };
@@ -34,6 +36,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E0E1D312BE0F61400CDA551 /* DirectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsView.swift; sourceTree = "<group>"; };
+		0E0E1D322BE0F61400CDA551 /* GPSContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSContentView.swift; sourceTree = "<group>"; };
+		0E0E1D352BE0FBDD00CDA551 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0E53D2792BE0E633005F9166 /* BlindNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlindNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E53D27C2BE0E633005F9166 /* BlindNavigatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlindNavigatorApp.swift; sourceTree = "<group>"; };
 		0E53D27E2BE0E633005F9166 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E0E1D302BE0F60500CDA551 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				0E0E1D312BE0F61400CDA551 /* DirectionsView.swift */,
+				0E0E1D322BE0F61400CDA551 /* GPSContentView.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		0E53D2702BE0E633005F9166 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +105,7 @@
 		0E53D27B2BE0E633005F9166 /* BlindNavigator */ = {
 			isa = PBXGroup;
 			children = (
+				0E0E1D352BE0FBDD00CDA551 /* Info.plist */,
 				0E53D28A2BE0E650005F9166 /* Component */,
 				0E53D2922BE0E659005F9166 /* Models */,
 				0E53D29E2BE0E659005F9166 /* Utilities */,
@@ -113,6 +128,7 @@
 		0E53D28A2BE0E650005F9166 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				0E0E1D302BE0F60500CDA551 /* Navigation */,
 				0E53D28B2BE0E650005F9166 /* Home */,
 				0E53D28D2BE0E650005F9166 /* VideoCapture */,
 			);
@@ -255,6 +271,7 @@
 			files = (
 				0E53D2AA2BE0E659005F9166 /* yolov8s.mlpackage in Sources */,
 				0E53D27F2BE0E633005F9166 /* ContentView.swift in Sources */,
+				0E0E1D332BE0F61400CDA551 /* DirectionsView.swift in Sources */,
 				0E53D2B22BE0E659005F9166 /* BoundingBoxView.swift in Sources */,
 				0E53D2A42BE0E659005F9166 /* VideoCapture.swift in Sources */,
 				0E53D2AF2BE0E659005F9166 /* yolov8n.mlpackage in Sources */,
@@ -267,6 +284,7 @@
 				0E53D2A52BE0E659005F9166 /* VideoCaptureView.swift in Sources */,
 				0E53D2A32BE0E659005F9166 /* VideoCaptureViewController.swift in Sources */,
 				0E53D2A12BE0E659005F9166 /* HomeScreen.swift in Sources */,
+				0E0E1D342BE0F61400CDA551 /* GPSContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,13 +415,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BlindNavigator/Preview Content\"";
 				DEVELOPMENT_TEAM = 47CKZC7YD4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BlindNavigator/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Ultralytics YOLO uses your camera to detect objects around you and display results in realtime on your screen 🚀";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = 6.0;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = 6.0;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = 6.0;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "To save results to Photo Library.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To see images in Photo Library and apply AI object detection to them.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -416,8 +439,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = au.edu.uts.BlindNavigator;
+				PRODUCT_BUNDLE_IDENTIFIER = kimchhorng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -429,13 +453,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BlindNavigator/Preview Content\"";
 				DEVELOPMENT_TEAM = 47CKZC7YD4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BlindNavigator/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Ultralytics YOLO uses your camera to detect objects around you and display results in realtime on your screen 🚀";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = 6.0;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = 6.0;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = 6.0;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "To save results to Photo Library.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "To see images in Photo Library and apply AI object detection to them.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -448,8 +477,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = au.edu.uts.BlindNavigator;
+				PRODUCT_BUNDLE_IDENTIFIER = kimchhorng;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
