@@ -2,17 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>MBXAccessToken</key>
+	<string>pk.eyJ1IjoicmF3c3RvbmUiLCJhIjoiY2x2b3Q0cG04MHNkMTJwbTJ2YXVmMWNmNyJ9.S9MKlHPO6EsV2W59ca3Q0g</string>
 	<key>NSLocationAlwaysUsageDescriptioN</key>
 	<string>&quot;This app uses your location to provide continuous navigation even when the app is not in the foreground.&quot;</string>
-	<key>CFBundleIdentifier</key>
-	<string></string>
-	<key>CFBundleExecutable</key>
-	<string></string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>6.0</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>6.0</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>6.0</string>
 </dict>
 </plist>
