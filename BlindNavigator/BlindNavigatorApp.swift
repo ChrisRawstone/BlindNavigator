@@ -12,7 +12,6 @@ struct BlindNavigatorApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-//            GPSContentView()
         }
     }
 }
