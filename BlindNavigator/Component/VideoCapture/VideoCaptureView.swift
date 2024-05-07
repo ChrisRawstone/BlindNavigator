@@ -17,6 +17,6 @@ struct VideoCaptureView: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: VideoCaptureViewController, context: Context) {
-     
+        
     }
 }

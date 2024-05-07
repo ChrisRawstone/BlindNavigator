@@ -11,6 +11,8 @@ import CoreML
 import UIKit
 import Vision
 
+let synthesizer = AVSpeechSynthesizer()
+
 var mlModel = try! yolov8m(configuration: .init()).model
 
 class VideoCaptureViewController: UIViewController {
@@ -44,6 +46,11 @@ class VideoCaptureViewController: UIViewController {
     var t3 = CACurrentMediaTime()  // FPS start
     var t4 = 0.0  // FPS dt smoothed
     // var cameraOutput: AVCapturePhotoOutput!
+    
+    var lastAppearedObjects: [String] = []
+    
+    private let numberOfObjects: Float = 3
+    var timer: Timer?
 
     // Developer mode
     let developerMode = UserDefaults.standard.bool(forKey: "developer_mode")   // developer mode selected in settings
@@ -62,18 +69,30 @@ class VideoCaptureViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        slider.value = 30
+        slider.value = numberOfObjects
         setLabels()
         setUpBoundingBoxViews()
         startVideo()
-
         // setModel()
         hideViews()
+        timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(describeObjectsIfNeeded), userInfo: nil, repeats: true)
     }
 
     func hideViews() {
         segmentedControl.isHidden = true
+    }
+    
+    @objc func describeObjectsIfNeeded() {
         
+        let objects = lastAppearedObjects.unique.prefix(3)
+        let text = objects.joined(separator: ", ")
+        let utterance = AVSpeechUtterance(string: "There's \(text) in front of you")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.rate = 0.4
+
+        synthesizer.speak(utterance)
+        
+        lastAppearedObjects.removeAll()
     }
     
     @IBAction func vibrate(_ sender: Any) {
@@ -333,7 +352,6 @@ class VideoCaptureViewController: UIViewController {
     func processObservations(for request: VNRequest, error: Error?) {
         DispatchQueue.main.async {
             if let results = request.results as? [VNRecognizedObjectObservation] {
-//                print(results)
                 self.show(predictions: results)
             } else {
                 self.show(predictions: [])
@@ -436,6 +454,7 @@ class VideoCaptureViewController: UIViewController {
         for i in 0..<boundingBoxViews.count {
             if i < predictions.count && i < Int(slider.value) {
                 let prediction = predictions[i]
+                
 
                 var rect = prediction.boundingBox  // normalized xywh, origin lower left
                 switch UIDevice.current.orientation {
@@ -480,8 +499,7 @@ class VideoCaptureViewController: UIViewController {
                 let bestClass = prediction.labels[0].identifier
                 let confidence = prediction.labels[0].confidence
                 // print(confidence, rect)  // debug (confidence, xywh) with xywh origin top left (pixels)
-                
-                
+                lastAppearedObjects.append(bestClass)
                 
                 // Show the bounding box.
                 boundingBoxViews[i].show(frame: rect,
@@ -609,3 +627,13 @@ extension UIViewController {
     }
 }
 
+extension Array where Element: Equatable {
+    var unique: [Element] {
+        var uniqueValues: [Element] = []
+        forEach { item in
+            guard !uniqueValues.contains(item) else { return }
+            uniqueValues.append(item)
+        }
+        return uniqueValues
+    }
+}
