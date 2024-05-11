@@ -35,7 +35,7 @@ struct ContentView: View {
                     }
                     else {
                         if hideVideoCaptureView == false {
-                            VideoCaptureView(destination: $destination)
+                            VideoCaptureView(destination: $destination, isPresented: $showScreen)
                         }
                         else {
                             ProgressView()

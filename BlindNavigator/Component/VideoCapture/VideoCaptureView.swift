@@ -9,6 +9,7 @@ import SwiftUI
 
 struct VideoCaptureView: UIViewControllerRepresentable {
     @Binding var destination: String
+    @Binding var isPresented: Bool
     
     typealias UIViewControllerType = VideoCaptureViewController
     
@@ -20,5 +21,8 @@ struct VideoCaptureView: UIViewControllerRepresentable {
     /// bind destination value  to video capture view 
     func updateUIViewController(_ uiViewController: VideoCaptureViewController, context: Context) {
         uiViewController.currentDestination = destination
+        uiViewController.speechEnabled = isPresented == false
+        
+        print("presented \(isPresented)")
     }
 }

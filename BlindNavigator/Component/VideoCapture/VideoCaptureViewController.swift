@@ -48,7 +48,7 @@ class VideoCaptureViewController: UIViewController {
     // var cameraOutput: AVCapturePhotoOutput!
     
     var currentDestination: String = "" { didSet { print("current destination is \(currentDestination)") } }
-    
+    var speechEnabled: Bool = true
     var lastAppearedObjects: [String] = []
     
     private let numberOfObjects: Float = 3
@@ -88,9 +88,6 @@ class VideoCaptureViewController: UIViewController {
     // MARK: - save destination
     func saveDestination(location: String, objects: [String]) {
         let defaults = UserDefaults.standard
-        print(location)
-        print(objects)
-        
         do{
             var destinations: [Destination] = []
             if let savedData = userDefault.object(forKey: "dashboard") as? Data {
@@ -116,7 +113,13 @@ class VideoCaptureViewController: UIViewController {
         }
     }
     
+    // MARK: - speech
     @objc func describeObjectsIfNeeded() {
+        guard speechEnabled else {
+            print("Speech not enable at the moment")
+            return
+        }
+        
         let objects = lastAppearedObjects.unique.prefix(3)
         saveDestination(location:  currentDestination.isEmpty ? "Roaming" : currentDestination, objects: Array(objects))
         
