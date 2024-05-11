@@ -51,7 +51,7 @@ class VideoCaptureViewController: UIViewController {
     
     var lastAppearedObjects: [String] = []
     
-    private let numberOfObjects: Float = 10
+    private var numberOfObjects: Double = 3
     var timer: Timer?
     private let userDefault = UserDefaults.standard
     
@@ -72,25 +72,53 @@ class VideoCaptureViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        slider.value = numberOfObjects
+        setDefaultsValueIfNeeded()
         setLabels()
         setUpBoundingBoxViews()
         startVideo()
-        // setModel()
+        setModel()
         hideViews()
         timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(describeObjectsIfNeeded), userInfo: nil, repeats: true)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: .didUpdateSetting, object: nil)
+    }
+    
+    func setDefaultsValueIfNeeded() {
+        let numbObjects = userDefault.double(forKey: "numberOfObjects")
+        let confidence = userDefault.double(forKey: "confidence")
+        let iouThreshold = userDefault.double(forKey: "threshold")
+        
+        if numbObjects == 0 {
+            userDefault.setValue(3.0, forKey: "numberOfObjects")
+        }
+        if confidence == 0 {
+            userDefault.setValue(0.28, forKey: "confidence")
+        }
+        if iouThreshold == 0 {
+            userDefault.setValue(0.15, forKey: "threshold")
+        }
     }
     
     func hideViews() {
         segmentedControl.isHidden = true
     }
     
+    @objc func refresh() {
+        let numbObjects = userDefault.double(forKey: "numberOfObjects")
+        let confidence = userDefault.double(forKey: "confidence")
+        let iouThreshold = userDefault.double(forKey: "threshold")
+        self.numberOfObjects = numbObjects
+        detector.featureProvider = ThresholdProvider(iouThreshold: iouThreshold, confidenceThreshold: confidence)
+        
+        self.labelSliderConf.text = String(confidence) + " Confidence Threshold \(self.numberOfObjects)"
+        self.labelSliderIoU.text = String(iouThreshold) + " IoU Threshold"
+        print("number \(numbObjects)")
+        print("confidence \(confidence)")
+        print("threshold \(iouThreshold)")
+    }
+    
     // MARK: - save destination
     func saveDestination(location: String, objects: [String]) {
-        let defaults = UserDefaults.standard
-        print(location)
-        print(objects)
-        
         do{
             var destinations: [Destination] = []
             if let savedData = userDefault.object(forKey: "dashboard") as? Data {
@@ -144,9 +172,7 @@ class VideoCaptureViewController: UIViewController {
     @IBAction func indexChanged(_ sender: Any) {
         selection.selectionChanged()
         activityIndicator.startAnimating()
-
-
-
+        
         self.labelName.text = "YOLOv8m"
         mlModel = try! yolov8m(configuration: .init()).model
 
@@ -157,8 +183,17 @@ class VideoCaptureViewController: UIViewController {
     
     func setModel() {
         /// VNCoreMLModel
+        let numbObjects = userDefault.double(forKey: "numberOfObjects")
+        let confidence = userDefault.double(forKey: "confidence")
+        let iouThreshold = userDefault.double(forKey: "threshold")
+        self.numberOfObjects = numbObjects
         detector = try! VNCoreMLModel(for: mlModel)
-        detector.featureProvider = ThresholdProvider(iouThreshold: 0.15, confidenceThreshold: 0.28)
+        detector.featureProvider = ThresholdProvider(iouThreshold: iouThreshold, confidenceThreshold: confidence)
+        
+        self.labelSliderConf.text = String(confidence) + " Confidence Threshold"
+        self.labelSliderIoU.text = String(iouThreshold) + " IoU Threshold"
+        sliderConf.value = Float(confidence)
+        sliderIoU.value = Float(iouThreshold)
         
         /// VNCoreMLRequest
         let request = VNCoreMLRequest(model: detector, completionHandler: { [weak self] request, error in
@@ -177,6 +212,10 @@ class VideoCaptureViewController: UIViewController {
         let iou = Double(round(100 * sliderIoU.value)) / 100
         self.labelSliderConf.text = String(conf) + " Confidence Threshold"
         self.labelSliderIoU.text = String(iou) + " IoU Threshold"
+        
+        userDefault.setValue(conf, forKey: "confidence")
+        userDefault.setValue(iou, forKey: "threshold")
+        
         detector.featureProvider = ThresholdProvider(iouThreshold: iou, confidenceThreshold: conf)
     }
     
@@ -273,13 +312,13 @@ class VideoCaptureViewController: UIViewController {
         // UIImageWriteToSavedPhotosAlbum(screenshot!, nil, nil, nil)
     }
     
-    let maxBoundingBoxViews = 100
+ //   let maxBoundingBoxViews = 100
     var boundingBoxViews = [BoundingBoxView]()
     var colors: [String: UIColor] = [:]
     
     func setUpBoundingBoxViews() {
         // Ensure all bounding box views are initialized up to the maximum allowed.
-        while boundingBoxViews.count < maxBoundingBoxViews {
+        while boundingBoxViews.count < Int(numberOfObjects) {
             boundingBoxViews.append(BoundingBoxView())
         }
         
