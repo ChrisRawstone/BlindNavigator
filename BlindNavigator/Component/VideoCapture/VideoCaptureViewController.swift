@@ -13,7 +13,7 @@ import Vision
 
 //let synthesizer = AVSpeechSynthesizer()
 
-var mlModel = try! yolov8m(configuration: .init()).model
+var mlModel = try! yolov8n(configuration: .init()).model
 
 class VideoCaptureViewController: UIViewController {
     @IBOutlet var videoPreview: UIView!
@@ -51,7 +51,7 @@ class VideoCaptureViewController: UIViewController {
     
     private let numberOfObjects: Float = 3
     var timer: Timer?
-
+    
     // Developer mode
     let developerMode = UserDefaults.standard.bool(forKey: "developer_mode")   // developer mode selected in settings
     let save_detections = false  // write every detection to detections.txt
@@ -155,26 +155,11 @@ class VideoCaptureViewController: UIViewController {
         selection.selectionChanged()
         activityIndicator.startAnimating()
 
-        /// Switch model
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            self.labelName.text = "YOLOv8n"
-            mlModel = try! yolov8n(configuration: .init()).model
-        case 1:
-            self.labelName.text = "YOLOv8s"
-            mlModel = try! yolov8s(configuration: .init()).model
-        case 2:
-            self.labelName.text = "YOLOv8m"
-            mlModel = try! yolov8m(configuration: .init()).model
-        case 3:
-            self.labelName.text = "YOLOv8l"
-            mlModel = try! yolov8l(configuration: .init()).model
-        case 4:
-            self.labelName.text = "YOLOv8x"
-            mlModel = try! yolov8x(configuration: .init()).model
-        default:
-            break
-        }
+
+
+        self.labelName.text = "YOLOv8n"
+        mlModel = try! yolov8n(configuration: .init()).model
+
         setModel()
         setUpBoundingBoxViews()
         activityIndicator.stopAnimating()
