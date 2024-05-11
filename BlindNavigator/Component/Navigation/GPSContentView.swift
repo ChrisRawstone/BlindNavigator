@@ -101,6 +101,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 struct GPSContentView: View {
     @StateObject private var locationManager = LocationManager()
     @State private var searchText = ""
+    @Binding var searchedDestination: String
     @State private var route: MKRoute?
     @State private var postion: MapCameraPosition = .userLocation(followsHeading: true, fallback: .automatic)
 
@@ -153,6 +154,7 @@ struct GPSContentView: View {
         directions.calculate { (response, error) in
             if let route = response?.routes.first {
                 self.route = route
+                searchedDestination = searchText
                 for step in route.steps {
                     self.speak(step: step)
                 }

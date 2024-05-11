@@ -20,6 +20,7 @@ extension CLLocationCoordinate2D {
 struct ContentView: View {
     @State var hideVideoCaptureView = true
     @State private var showScreen = false
+    @State private var destination = ""
     
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -34,7 +35,7 @@ struct ContentView: View {
                     }
                     else {
                         if hideVideoCaptureView == false {
-                            VideoCaptureView()
+                            VideoCaptureView(destination: $destination)
                         }
                         else {
                             ProgressView()
@@ -42,7 +43,7 @@ struct ContentView: View {
                     }
                 }
                 
-                GPSContentView()
+                GPSContentView(searchedDestination: $destination)
             }
             
             Button {
