@@ -20,6 +20,7 @@ extension CLLocationCoordinate2D {
 struct ContentView: View {
     @State var hideVideoCaptureView = true
     @State private var showScreen = false
+    @State private var showSetting = false
     @State private var destination = ""
     
     var body: some View {
@@ -46,20 +47,37 @@ struct ContentView: View {
                 GPSContentView(searchedDestination: $destination)
             }
             
-            Button {
-                showScreen = true
-            } label: {
-               Image(systemName: "info.circle.fill")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 30, height: 30)
-                    .tint(.gray)
+            VStack(spacing: 0) {
+                Button {
+                    showScreen = true
+                } label: {
+                   Image(systemName: "info.circle.fill")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 30, height: 30)
+                        .tint(.gray)
+                }
+                .padding()
+                
+                Button {
+                    showSetting = true
+                } label: {
+                   Image(systemName: "gear")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 30, height: 30)
+                        .tint(.gray)
+                }
+                .padding(.horizontal)
             }
-            .padding()
         }
         .sheet(isPresented: $showScreen, content: {
             DashboardScreen()
         })
+        
+        .sheet(isPresented: $showSetting) {
+            SettingScreen()
+        }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 hideVideoCaptureView = false
