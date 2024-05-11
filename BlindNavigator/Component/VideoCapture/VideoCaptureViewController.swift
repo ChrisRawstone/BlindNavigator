@@ -82,10 +82,58 @@ class VideoCaptureViewController: UIViewController {
         segmentedControl.isHidden = true
     }
     
+    func saveDestination(location: String, objects: [String]) {
+        let defaults = UserDefaults.standard
+
+//        // Get the existing list of destinations (if any)
+//        var destinationsList: [[String: Any]] = [] // Dictionary format with location and objects
+//        if let data = defaults.data(forKey: "destinations") {
+//            destinationsList = try? PropertyListDecoder().decode([[String: Any]].self, from: data) ?? []
+//        }
+//
+//        // Create a new entry with location and objects
+//        let newDestination: [String: Any] = ["location": location, "objects": objects]
+//
+//        // Update the list (either add or append)
+//        if destinationsList.isEmpty {
+//            destinationsList.append(newDestination)
+//        } else {
+//            // Check for duplicate locations (optional)
+//            var foundDuplicate = false
+//            for destination in destinationsList {
+//                if destination["location"] as? String == location {
+//                    foundDuplicate = true
+//                    // Update objects for existing location (optional)
+//                    destination["objects"] = objects
+//                    break
+//                }
+//            }
+//            if !foundDuplicate {
+//                destinationsList.append(newDestination)
+//            }
+//        }
+//
+//        // Encode the updated destinations list
+//        if let encodedData = try? PropertyListEncoder().encode(destinationsList) {
+//            defaults.set(encodedData, forKey: "destinations")
+//        } else {
+//            print("Error encoding destination data")
+//        }
+//
+//        // Synchronize changes to disk
+//        defaults.synchronize()
+    }
+    
     @objc func describeObjectsIfNeeded() {
         let objects = lastAppearedObjects.unique.prefix(3)
+        
+        
+       //saveDestination(location: "Roaming", objects: objects.map( ))
+        
         let text = objects.joined(separator: ", ")
-        let utterance = AVSpeechUtterance(string: "There's \(text) in front of you")
+        let randomizedText = speechTemplates.randomElement()?.replacingOccurrences(of: "{1}", with: text)
+        
+        let utterance = AVSpeechUtterance(string: randomizedText ?? "")
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         utterance.rate = 0.4
         
@@ -545,11 +593,6 @@ class VideoCaptureViewController: UIViewController {
                 saveText(text: str, file: "frames.txt")  // Write stats for each image
             }
         }
-
-        // Debug
-        // print(str)
-        // print(UIDevice.current.identifierForVendor!)
-        // saveImage()
     }
 
     // Pinch to Zoom Start ---------------------------------------------------------------------------------------------

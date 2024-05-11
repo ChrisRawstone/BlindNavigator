@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0E0E1D332BE0F61400CDA551 /* DirectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0E1D312BE0F61400CDA551 /* DirectionsView.swift */; };
 		0E0E1D342BE0F61400CDA551 /* GPSContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0E1D322BE0F61400CDA551 /* GPSContentView.swift */; };
+		0E13436C2BEF5042008E7084 /* DashboardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E13436B2BEF5042008E7084 /* DashboardScreen.swift */; };
+		0E13436F2BEF50AE008E7084 /* UIDevice+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E13436E2BEF50AE008E7084 /* UIDevice+extension.swift */; };
+		0E1343712BEF52F5008E7084 /* SpeechTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1343702BEF52F5008E7084 /* SpeechTemplates.swift */; };
+		0E1343732BEF59EF008E7084 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1343722BEF59EF008E7084 /* Destination.swift */; };
 		0E53D27D2BE0E633005F9166 /* BlindNavigatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D27C2BE0E633005F9166 /* BlindNavigatorApp.swift */; };
 		0E53D27F2BE0E633005F9166 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D27E2BE0E633005F9166 /* ContentView.swift */; };
 		0E53D2812BE0E634005F9166 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E53D2802BE0E634005F9166 /* Assets.xcassets */; };
@@ -39,6 +43,10 @@
 		0E0E1D312BE0F61400CDA551 /* DirectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsView.swift; sourceTree = "<group>"; };
 		0E0E1D322BE0F61400CDA551 /* GPSContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSContentView.swift; sourceTree = "<group>"; };
 		0E0E1D352BE0FBDD00CDA551 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0E13436B2BEF5042008E7084 /* DashboardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardScreen.swift; sourceTree = "<group>"; };
+		0E13436E2BEF50AE008E7084 /* UIDevice+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+extension.swift"; sourceTree = "<group>"; };
+		0E1343702BEF52F5008E7084 /* SpeechTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechTemplates.swift; sourceTree = "<group>"; };
+		0E1343722BEF59EF008E7084 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		0E53D2792BE0E633005F9166 /* BlindNavigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlindNavigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E53D27C2BE0E633005F9166 /* BlindNavigatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlindNavigatorApp.swift; sourceTree = "<group>"; };
 		0E53D27E2BE0E633005F9166 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,6 +94,22 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		0E13436A2BEF502A008E7084 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				0E13436B2BEF5042008E7084 /* DashboardScreen.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		0E13436D2BEF5093008E7084 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0E13436E2BEF50AE008E7084 /* UIDevice+extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		0E53D2702BE0E633005F9166 = {
 			isa = PBXGroup;
 			children = (
@@ -105,12 +129,13 @@
 		0E53D27B2BE0E633005F9166 /* BlindNavigator */ = {
 			isa = PBXGroup;
 			children = (
-				0E0E1D352BE0FBDD00CDA551 /* Info.plist */,
 				0E53D28A2BE0E650005F9166 /* Component */,
 				0E53D2922BE0E659005F9166 /* Models */,
 				0E53D29E2BE0E659005F9166 /* Utilities */,
+				0E13436D2BEF5093008E7084 /* Extension */,
 				0E53D27C2BE0E633005F9166 /* BlindNavigatorApp.swift */,
 				0E53D27E2BE0E633005F9166 /* ContentView.swift */,
+				0E0E1D352BE0FBDD00CDA551 /* Info.plist */,
 				0E53D2802BE0E634005F9166 /* Assets.xcassets */,
 				0E53D2822BE0E634005F9166 /* Preview Content */,
 			);
@@ -128,6 +153,7 @@
 		0E53D28A2BE0E650005F9166 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				0E13436A2BEF502A008E7084 /* Dashboard */,
 				0E0E1D302BE0F60500CDA551 /* Navigation */,
 				0E53D28B2BE0E650005F9166 /* Home */,
 				0E53D28D2BE0E650005F9166 /* VideoCapture */,
@@ -178,6 +204,8 @@
 			children = (
 				0E53D29F2BE0E659005F9166 /* ThresholdProvider.swift */,
 				0E53D2A02BE0E659005F9166 /* BoundingBoxView.swift */,
+				0E1343702BEF52F5008E7084 /* SpeechTemplates.swift */,
+				0E1343722BEF59EF008E7084 /* Destination.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -270,11 +298,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E53D2AA2BE0E659005F9166 /* yolov8s.mlpackage in Sources */,
+				0E13436C2BEF5042008E7084 /* DashboardScreen.swift in Sources */,
+				0E1343732BEF59EF008E7084 /* Destination.swift in Sources */,
 				0E53D27F2BE0E633005F9166 /* ContentView.swift in Sources */,
 				0E0E1D332BE0F61400CDA551 /* DirectionsView.swift in Sources */,
 				0E53D2B22BE0E659005F9166 /* BoundingBoxView.swift in Sources */,
 				0E53D2A42BE0E659005F9166 /* VideoCapture.swift in Sources */,
 				0E53D2AF2BE0E659005F9166 /* yolov8n.mlpackage in Sources */,
+				0E13436F2BEF50AE008E7084 /* UIDevice+extension.swift in Sources */,
 				0E53D27D2BE0E633005F9166 /* BlindNavigatorApp.swift in Sources */,
 				0E53D2A72BE0E659005F9166 /* yolov8l.mlpackage in Sources */,
 				0E53D2B12BE0E659005F9166 /* ThresholdProvider.swift in Sources */,
@@ -283,6 +314,7 @@
 				0E53D2AD2BE0E659005F9166 /* yolov8m.mlpackage in Sources */,
 				0E53D2A52BE0E659005F9166 /* VideoCaptureView.swift in Sources */,
 				0E53D2A32BE0E659005F9166 /* VideoCaptureViewController.swift in Sources */,
+				0E1343712BEF52F5008E7084 /* SpeechTemplates.swift in Sources */,
 				0E53D2A12BE0E659005F9166 /* HomeScreen.swift in Sources */,
 				0E0E1D342BE0F61400CDA551 /* GPSContentView.swift in Sources */,
 			);

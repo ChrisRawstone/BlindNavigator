@@ -27,11 +27,18 @@ struct ContentView: View {
                 ZStack {
                     Color.white
                 
-                    if hideVideoCaptureView == false {
-                        VideoCaptureView()
+                    if UIDevice.current.isSimulator {
+                        Text("Video view is currently not available on simulator")
+                            .multilineTextAlignment(.center)
+                            .padding(.horizontal)
                     }
                     else {
-                        ProgressView()
+                        if hideVideoCaptureView == false {
+                            VideoCaptureView()
+                        }
+                        else {
+                            ProgressView()
+                        }
                     }
                 }
                 
@@ -41,15 +48,16 @@ struct ContentView: View {
             Button {
                 showScreen = true
             } label: {
-               Image(systemName: "xmark.circle.fill")
+               Image(systemName: "info.circle.fill")
                     .resizable()
                     .scaledToFill()
                     .frame(width: 30, height: 30)
+                    .tint(.gray)
             }
             .padding()
         }
         .sheet(isPresented: $showScreen, content: {
-            Text("Hello")
+            DashboardScreen()
         })
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
