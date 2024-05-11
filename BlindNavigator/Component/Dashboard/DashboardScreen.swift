@@ -3,20 +3,18 @@ import SwiftUI
 
 
 
-
 struct Destination_Object: Codable {
     let location: String
     var objects: [String]
 }
 
+
+
 struct DashboardScreen: View {
     @State private var destinations: [Destination_Object] = []
     @State private var selectedLocation: String = ""
     
-    init() {
-        setupDestinations()
-    }
-    
+
     var body: some View {
         NavigationView {
             List(destinations, id: \.location) { destination in
@@ -36,19 +34,7 @@ struct DashboardScreen: View {
         }
     }
     
-    private func setupDestinations() {
-        // Dummy destinations setup
-        let dummyDestinations = [
-            Destination_Object(location: "Paris", objects: ["Eiffel Tower", "Louvre Museum"]),
-            Destination_Object(location: "New York", objects: ["Statue of Liberty", "Central Park", "Central Park", "Central Park"])
-        ]
-        
-        // Encode and store destinations
-        if let encodedData = try? JSONEncoder().encode(dummyDestinations) {
-            UserDefaults.standard.set(encodedData, forKey: "dashboard")
-        }
-    }
-    
+
     private func loadDestinations() {
         if let data = UserDefaults.standard.data(forKey: "dashboard"),
            let decodedDestinations = try? JSONDecoder().decode([Destination_Object].self, from: data) {

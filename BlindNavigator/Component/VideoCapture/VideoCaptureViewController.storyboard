@@ -90,7 +90,7 @@
                                 </accessibility>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.25 Confidence Threshold" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhe-73-Ryr" userLabel="LabelSliderConf">
-                                <rect key="frame" x="6" y="619" width="186" height="23"/>
+                                <rect key="frame" x="6" y="619" width="186" height="18"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES" updatesFrequently="YES"/>
                                 </accessibility>
@@ -98,8 +98,8 @@
                                 <color key="textColor" systemColor="groupTableViewBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider hidden="YES" opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.25" minValue="0.01" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Gax-hR-qdY">
-                                <rect key="frame" x="3" y="646" width="175" height="31"/>
+                            <slider opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.050000000000000003" minValue="0.01" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Gax-hR-qdY">
+                                <rect key="frame" x="3" y="641" width="175" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="n9W-cI-Zag"/>
                                     <constraint firstAttribute="width" constant="171" id="xzb-57-lTA"/>
@@ -112,7 +112,7 @@
                                 </connections>
                             </slider>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.45 IoU Threshold" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZo-QP-q2z" userLabel="LabelSliderIoU">
-                                <rect key="frame" x="6" y="677" width="131" height="23"/>
+                                <rect key="frame" x="6" y="672" width="131" height="18"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES" updatesFrequently="YES"/>
                                 </accessibility>
@@ -120,8 +120,8 @@
                                 <color key="textColor" systemColor="groupTableViewBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider hidden="YES" opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.45000000000000001" minValue="0.0" maxValue="0.98999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="6JI-Fw-yih">
-                                <rect key="frame" x="3" y="704" width="175" height="31"/>
+                            <slider opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.45000000000000001" minValue="0.0" maxValue="0.98999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="6JI-Fw-yih">
+                                <rect key="frame" x="3" y="694" width="175" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="171" id="N91-bG-Rfc"/>
                                     <constraint firstAttribute="height" constant="30" id="cU4-9D-Of4"/>
@@ -134,7 +134,7 @@
                                 </connections>
                             </slider>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 items (max 30)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ytf-30-5R8" userLabel="LabelSlider">
-                                <rect key="frame" x="8.0000000000000071" y="179" width="116.66666666666669" height="23"/>
+                                <rect key="frame" x="8.0000000000000071" y="184" width="116.66666666666669" height="18"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" staticText="YES" updatesFrequently="YES"/>
                                 </accessibility>

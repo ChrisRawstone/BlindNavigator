@@ -13,7 +13,7 @@ import Vision
 
 //let synthesizer = AVSpeechSynthesizer()
 
-var mlModel = try! yolov8n(configuration: .init()).model
+var mlModel = try! yolov8m(configuration: .init()).model
 
 class VideoCaptureViewController: UIViewController {
     @IBOutlet var videoPreview: UIView!
@@ -51,7 +51,7 @@ class VideoCaptureViewController: UIViewController {
     
     var lastAppearedObjects: [String] = []
     
-    private let numberOfObjects: Float = 3
+    private let numberOfObjects: Float = 10
     var timer: Timer?
     private let userDefault = UserDefaults.standard
     
@@ -147,8 +147,8 @@ class VideoCaptureViewController: UIViewController {
 
 
 
-        self.labelName.text = "YOLOv8n"
-        mlModel = try! yolov8n(configuration: .init()).model
+        self.labelName.text = "YOLOv8m"
+        mlModel = try! yolov8m(configuration: .init()).model
 
         setModel()
         setUpBoundingBoxViews()
@@ -158,7 +158,7 @@ class VideoCaptureViewController: UIViewController {
     func setModel() {
         /// VNCoreMLModel
         detector = try! VNCoreMLModel(for: mlModel)
-        detector.featureProvider = ThresholdProvider()
+        detector.featureProvider = ThresholdProvider(iouThreshold: 0.15, confidenceThreshold: 0.28)
         
         /// VNCoreMLRequest
         let request = VNCoreMLRequest(model: detector, completionHandler: { [weak self] request, error in
