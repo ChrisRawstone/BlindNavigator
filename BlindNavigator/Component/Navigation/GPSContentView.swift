@@ -155,15 +155,31 @@ struct GPSContentView: View {
             if let route = response?.routes.first {
                 self.route = route
                 searchedDestination = searchText
-                for step in route.steps {
-                    self.speak(step: step)
+                let steps = route.steps
+                // Start from
+                if steps.count > 0 {
+                    for (index, step) in steps.dropFirst().enumerated() {
+                        // Speak "and" before each step except the last one
+                        if index < steps.dropFirst().count - 1 {
+                            self.speak(step: step)
+                            let speechUtterance = AVSpeechUtterance(string: "and afterwards")
+                            speechSynthesizer.speak(speechUtterance)
+                        } else {
+                            self.speak(step: step)
+                        }
+                    }
                 }
             }
         }
+
     }
-    
+    func truncateToNearestTen(_ value: Double) -> Int {
+        let roundedValue = round(value / 10) * 10
+        return Int(roundedValue)
+    }
+
     private func speak(step: MKRoute.Step) {
-        let instruction = "In \(step.distance) meters, \(step.instructions)"
+        let instruction = "In \(truncateToNearestTen(step.distance)) meters, \(step.instructions)"
         let speechUtterance = AVSpeechUtterance(string: instruction)
         speechSynthesizer.speak(speechUtterance)
     }

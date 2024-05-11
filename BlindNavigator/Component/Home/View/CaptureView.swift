@@ -62,31 +62,31 @@ class CaptureViewController: UIViewController {
     var boundingBoxViews = [BoundingBoxView]()
     var colors: [String: UIColor] = [:]
     
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        screenRect = UIScreen.main.bounds
-        self.previewLayer.frame = CGRect(x: 0, y: 0, width: screenRect.size.width, height: screenRect.size.height)
-        
-        switch UIDevice.current.orientation {
-            // Home button on top
-        case UIDeviceOrientation.portraitUpsideDown:
-            self.previewLayer.connection?.videoOrientation = .portraitUpsideDown
-            
-            // Home button on right
-        case UIDeviceOrientation.landscapeLeft:
-            self.previewLayer.connection?.videoOrientation = .landscapeRight
-            
-            // Home button on left
-        case UIDeviceOrientation.landscapeRight:
-            self.previewLayer.connection?.videoOrientation = .landscapeLeft
-            
-            // Home button at bottom
-        case UIDeviceOrientation.portrait:
-            self.previewLayer.connection?.videoOrientation = .portrait
-            
-        default:
-            break
-        }
-    }
+//    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+//        screenRect = UIScreen.main.bounds
+//        self.previewLayer.frame = CGRect(x: 0, y: 0, width: screenRect.size.width, height: screenRect.size.height)
+//        
+//        switch UIDevice.current.orientation {
+//            // Home button on top
+//        case UIDeviceOrientation.portraitUpsideDown:
+//            self.previewLayer.connection?.videoRotationAngle = .portraitUpsideDown
+//            
+//            // Home button on right
+//        case UIDeviceOrientation.landscapeLeft:
+//            self.previewLayer.connection?.videoRotationAngle = .landscapeRight
+//            
+//            // Home button on left
+//        case UIDeviceOrientation.landscapeRight:
+//            self.previewLayer.connection?.videoRotationAngle = .landscapeLeft
+//            
+//            // Home button at bottom
+//        case UIDeviceOrientation.portrait:
+//            self.previewLayer.connection?.videoRotationAngle = .portrait
+//            
+//        default:
+//            break
+//        }
+//    }
     
     func checkPermission() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
@@ -157,7 +157,7 @@ class CaptureViewController: UIViewController {
             captureSession.addOutput(videoOutput)
         }
 
-        videoOutput.connection(with: .video)?.videoOrientation = .portrait
+        videoOutput.connection(with: .video)?.videoRotationAngle = 90 
 
         do {
             try captureDevice.lockForConfiguration()
@@ -173,7 +173,7 @@ class CaptureViewController: UIViewController {
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = CGRect(x: 0, y: 0, width: screenRect.size.width, height: screenRect.size.height)
         previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill // Fill screen
-        previewLayer.connection?.videoOrientation = .portrait
+        previewLayer.connection?.videoRotationAngle = 90
         
         // Updates to UI must be on main queue
         DispatchQueue.main.async { [weak self] in

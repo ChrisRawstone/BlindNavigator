@@ -100,7 +100,7 @@ class VideoCaptureViewController: UIViewController {
     }
     
     func hideViews() {
-        segmentedControl.isHidden = true
+//        segmentedControl.isHidden = true
     }
     
     @objc func refresh() {

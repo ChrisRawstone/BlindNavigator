@@ -12,10 +12,6 @@ import MapKit
 //global speechSynthesizer
 var speechSynthesizer = AVSpeechSynthesizer()
 
-extension CLLocationCoordinate2D {
-    static var start = CLLocationCoordinate2D(latitude: 49.7071, longitude: 0.2064)
-    static var end = CLLocationCoordinate2D(latitude: 49.734, longitude: 0.222)
-}
 
 struct ContentView: View {
     @State var hideVideoCaptureView = true

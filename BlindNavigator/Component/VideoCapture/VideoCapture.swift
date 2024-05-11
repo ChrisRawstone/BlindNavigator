@@ -69,7 +69,7 @@ public class VideoCapture: NSObject {
 
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.videoGravity = .resizeAspectFill
-        previewLayer.connection?.videoOrientation = .portrait
+        previewLayer.connection?.videoRotationAngle = 90
         self.previewLayer = previewLayer
 
         let settings: [String: Any] = [
@@ -87,7 +87,7 @@ public class VideoCapture: NSObject {
             captureSession.addOutput(cameraOutput)
         }
 
-        videoOutput.connection(with: .video)?.videoOrientation = .portrait
+        videoOutput.connection(with: .video)?.videoRotationAngle = 90
 
         do {
             try captureDevice.lockForConfiguration()

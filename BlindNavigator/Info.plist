@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationAlwaysUsageDescriptioN</key>
-	<string>"This app uses your location to provide continuous navigation even when the app is not in the foreground."</string>
+	<string>&quot;This app uses your location to provide continuous navigation even when the app is not in the foreground.&quot;</string>
 </dict>
 </plist>
