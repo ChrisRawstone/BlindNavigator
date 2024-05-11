@@ -92,6 +92,4 @@ BlindNavigator/BlindNavigator/Models
 BlindNavigator/BlindNavigator/Models
 *.pt
 BlindNavigator/.DS_Store
-BlindNavigator.xcodeproj/project.pbxproj
 .DS_Store
-*project.pbxproj
