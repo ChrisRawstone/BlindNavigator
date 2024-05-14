@@ -51,7 +51,7 @@ class VideoCaptureViewController: UIViewController {
     
     var lastAppearedObjects: [String] = []
     
-    private var numberOfObjects: Double = 3
+    private var numberOfObjects: Double = 10
     var timer: Timer?
     private let userDefault = UserDefaults.standard
     
@@ -89,7 +89,7 @@ class VideoCaptureViewController: UIViewController {
         let iouThreshold = userDefault.double(forKey: "threshold")
         
         if numbObjects == 0 {
-            userDefault.setValue(3.0, forKey: "numberOfObjects")
+            userDefault.setValue(10.0, forKey: "numberOfObjects")
         }
         if confidence == 0 {
             userDefault.setValue(0.28, forKey: "confidence")
@@ -145,7 +145,7 @@ class VideoCaptureViewController: UIViewController {
     }
     
     @objc func describeObjectsIfNeeded() {
-        let objects = lastAppearedObjects.unique.prefix(3)
+        let objects = lastAppearedObjects.unique.prefix(10)
         saveDestination(location:  currentDestination.isEmpty ? "Roaming" : currentDestination, objects: Array(objects))
         
         let text = objects.joined(separator: ", ")
