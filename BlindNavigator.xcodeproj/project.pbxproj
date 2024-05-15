@@ -21,10 +21,7 @@
 		0E53D2A42BE0E659005F9166 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D2902BE0E650005F9166 /* VideoCapture.swift */; };
 		0E53D2A52BE0E659005F9166 /* VideoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D2912BE0E650005F9166 /* VideoCaptureView.swift */; };
 		0E53D2A82BE0E659005F9166 /* download_models.py in Resources */ = {isa = PBXBuildFile; fileRef = 0E53D2952BE0E659005F9166 /* download_models.py */; };
-		0E53D2A92BE0E659005F9166 /* yolov8n.pt in Resources */ = {isa = PBXBuildFile; fileRef = 0E53D2962BE0E659005F9166 /* yolov8n.pt */; };
 		0E53D2AD2BE0E659005F9166 /* yolov8m.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D29A2BE0E659005F9166 /* yolov8m.mlpackage */; };
-		0E53D2AF2BE0E659005F9166 /* yolov8n.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D29C2BE0E659005F9166 /* yolov8n.mlpackage */; };
-		0E53D2B02BE0E659005F9166 /* yolov8m.pt in Resources */ = {isa = PBXBuildFile; fileRef = 0E53D29D2BE0E659005F9166 /* yolov8m.pt */; };
 		0E53D2B12BE0E659005F9166 /* ThresholdProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D29F2BE0E659005F9166 /* ThresholdProvider.swift */; };
 		0E53D2B22BE0E659005F9166 /* BoundingBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E53D2A02BE0E659005F9166 /* BoundingBoxView.swift */; };
 		0E8F37D62BF4D43000F676B3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0E8F37D52BF4D43000F676B3 /* README.md */; };
@@ -50,10 +47,7 @@
 		0E53D2902BE0E650005F9166 /* VideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
 		0E53D2912BE0E650005F9166 /* VideoCaptureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCaptureView.swift; sourceTree = "<group>"; };
 		0E53D2952BE0E659005F9166 /* download_models.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = download_models.py; sourceTree = "<group>"; };
-		0E53D2962BE0E659005F9166 /* yolov8n.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yolov8n.pt; sourceTree = "<group>"; };
 		0E53D29A2BE0E659005F9166 /* yolov8m.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolov8m.mlpackage; sourceTree = "<group>"; };
-		0E53D29C2BE0E659005F9166 /* yolov8n.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolov8n.mlpackage; sourceTree = "<group>"; };
-		0E53D29D2BE0E659005F9166 /* yolov8m.pt */ = {isa = PBXFileReference; lastKnownFileType = file; path = yolov8m.pt; sourceTree = "<group>"; };
 		0E53D29F2BE0E659005F9166 /* ThresholdProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThresholdProvider.swift; sourceTree = "<group>"; };
 		0E53D2A02BE0E659005F9166 /* BoundingBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBoxView.swift; sourceTree = "<group>"; };
 		0E8F37D52BF4D43000F676B3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -166,10 +160,7 @@
 			children = (
 				0E1343722BEF59EF008E7084 /* Destination.swift */,
 				0E53D2952BE0E659005F9166 /* download_models.py */,
-				0E53D2962BE0E659005F9166 /* yolov8n.pt */,
 				0E53D29A2BE0E659005F9166 /* yolov8m.mlpackage */,
-				0E53D29C2BE0E659005F9166 /* yolov8n.mlpackage */,
-				0E53D29D2BE0E659005F9166 /* yolov8m.pt */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -255,8 +246,6 @@
 				0E53D2842BE0E634005F9166 /* Preview Assets.xcassets in Resources */,
 				0EA474EB2BF2EC4400E60A6D /* Launch Screen.storyboard in Resources */,
 				0E53D2812BE0E634005F9166 /* Assets.xcassets in Resources */,
-				0E53D2B02BE0E659005F9166 /* yolov8m.pt in Resources */,
-				0E53D2A92BE0E659005F9166 /* yolov8n.pt in Resources */,
 				0E53D2A22BE0E659005F9166 /* VideoCaptureViewController.storyboard in Resources */,
 				0E8F37D62BF4D43000F676B3 /* README.md in Resources */,
 				0E53D2A82BE0E659005F9166 /* download_models.py in Resources */,
@@ -277,7 +266,6 @@
 				0E53D2B22BE0E659005F9166 /* BoundingBoxView.swift in Sources */,
 				0EA85F022BEFC2A0007BDBAD /* NotificationCenter+Extension.swift in Sources */,
 				0E53D2A42BE0E659005F9166 /* VideoCapture.swift in Sources */,
-				0E53D2AF2BE0E659005F9166 /* yolov8n.mlpackage in Sources */,
 				0E13436F2BEF50AE008E7084 /* UIDevice+extension.swift in Sources */,
 				0E53D27D2BE0E633005F9166 /* BlindNavigatorApp.swift in Sources */,
 				0E53D2B12BE0E659005F9166 /* ThresholdProvider.swift in Sources */,
