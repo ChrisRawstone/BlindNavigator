@@ -11,27 +11,13 @@ import CoreML
 import UIKit
 import Vision
 
-//let synthesizer = AVSpeechSynthesizer()
-
 var mlModel = try! yolov8m(configuration: .init()).model
 
 class VideoCaptureViewController: UIViewController {
     @IBOutlet var videoPreview: UIView!
     @IBOutlet var View0: UIView!
-    @IBOutlet var segmentedControl: UISegmentedControl!
-    @IBOutlet var playButtonOutlet: UIBarButtonItem!
-    @IBOutlet var pauseButtonOutlet: UIBarButtonItem!
-    @IBOutlet var slider: UISlider!
-    @IBOutlet var sliderConf: UISlider!
-    @IBOutlet var sliderIoU: UISlider!
-    @IBOutlet weak var labelName: UILabel!
-    @IBOutlet weak var labelFPS: UILabel!
-    @IBOutlet weak var labelZoom: UILabel!
     
     @IBOutlet weak var labelVersion: UILabel!
-    @IBOutlet weak var labelSlider: UILabel!
-    @IBOutlet weak var labelSliderConf: UILabel!
-    @IBOutlet weak var labelSliderIoU: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let selection = UISelectionFeedbackGenerator()
@@ -110,8 +96,6 @@ class VideoCaptureViewController: UIViewController {
         self.numberOfObjects = numbObjects
         detector.featureProvider = ThresholdProvider(iouThreshold: iouThreshold, confidenceThreshold: confidence)
         
-        self.labelSliderConf.text = String(confidence) + " Confidence Threshold \(self.numberOfObjects)"
-        self.labelSliderIoU.text = String(iouThreshold) + " IoU Threshold"
         print("number \(numbObjects)")
         print("confidence \(confidence)")
         print("threshold \(iouThreshold)")
@@ -168,18 +152,7 @@ class VideoCaptureViewController: UIViewController {
     @IBAction func vibrate(_ sender: Any) {
         selection.selectionChanged()
     }
-    
-    @IBAction func indexChanged(_ sender: Any) {
-        selection.selectionChanged()
-        activityIndicator.startAnimating()
-        
-        self.labelName.text = "YOLOv8m"
-        mlModel = try! yolov8m(configuration: .init()).model
 
-        setModel()
-        setUpBoundingBoxViews()
-        activityIndicator.stopAnimating()
-    }
     
     func setModel() {
         /// VNCoreMLModel
@@ -189,11 +162,6 @@ class VideoCaptureViewController: UIViewController {
         self.numberOfObjects = numbObjects
         detector = try! VNCoreMLModel(for: mlModel)
         detector.featureProvider = ThresholdProvider(iouThreshold: iouThreshold, confidenceThreshold: confidence)
-        
-        self.labelSliderConf.text = String(confidence) + " Confidence Threshold"
-        self.labelSliderIoU.text = String(iouThreshold) + " IoU Threshold"
-        sliderConf.value = Float(confidence)
-        sliderIoU.value = Float(iouThreshold)
         
         /// VNCoreMLRequest
         let request = VNCoreMLRequest(model: detector, completionHandler: { [weak self] request, error in
@@ -206,119 +174,17 @@ class VideoCaptureViewController: UIViewController {
         t4 = 0.0  // FPS dt smoothed
     }
     
-    /// Update thresholds from slider values
-    @IBAction func sliderChanged(_ sender: Any) {
-        let conf = Double(round(100 * sliderConf.value)) / 100
-        let iou = Double(round(100 * sliderIoU.value)) / 100
-        self.labelSliderConf.text = String(conf) + " Confidence Threshold"
-        self.labelSliderIoU.text = String(iou) + " IoU Threshold"
-        
-        userDefault.setValue(conf, forKey: "confidence")
-        userDefault.setValue(iou, forKey: "threshold")
-        
-        detector.featureProvider = ThresholdProvider(iouThreshold: iou, confidenceThreshold: conf)
-    }
-    
-    @IBAction func takePhoto(_ sender: Any?) {
-        let t0 = DispatchTime.now().uptimeNanoseconds
-        
-        // 1. captureSession and cameraOutput
-        // session = videoCapture.captureSession  // session = AVCaptureSession()
-        // session.sessionPreset = AVCaptureSession.Preset.photo
-        // cameraOutput = AVCapturePhotoOutput()
-        // cameraOutput.isHighResolutionCaptureEnabled = true
-        // cameraOutput.isDualCameraDualPhotoDeliveryEnabled = true
-        // print("1 Done: ", Double(DispatchTime.now().uptimeNanoseconds - t0) / 1E9)
-        
-        // 2. Settings
-        let settings = AVCapturePhotoSettings()
-        // settings.flashMode = .off
-        // settings.isHighResolutionPhotoEnabled = cameraOutput.isHighResolutionCaptureEnabled
-        // settings.isDualCameraDualPhotoDeliveryEnabled = self.videoCapture.cameraOutput.isDualCameraDualPhotoDeliveryEnabled
-        
-        // 3. Capture Photo
-        usleep(20_000)  // short 10 ms delay to allow camera to focus
-        self.videoCapture.cameraOutput.capturePhoto(with: settings, delegate: self as AVCapturePhotoCaptureDelegate)
-        print("3 Done: ", Double(DispatchTime.now().uptimeNanoseconds - t0) / 1E9)
-    }
-    
-    @IBAction func logoButton(_ sender: Any) {
-        selection.selectionChanged()
-        if let link = URL(string: "https://www.ultralytics.com") {
-            UIApplication.shared.open(link)
-        }
-    }
-    
     func setLabels() {
-        self.labelName.text = "YOLOv8m"
         self.labelVersion.text = "Version "
     }
-    
-    @IBAction func playButton(_ sender: Any) {
-        selection.selectionChanged()
-        self.videoCapture.start()
-        playButtonOutlet.isEnabled = false
-        pauseButtonOutlet.isEnabled = true
-    }
-    
-    @IBAction func pauseButton(_ sender: Any?) {
-        selection.selectionChanged()
-        self.videoCapture.stop()
-        playButtonOutlet.isEnabled = true
-        pauseButtonOutlet.isEnabled = false
-    }
-    
-    @IBAction func switchCameraTapped(_ sender: Any) {
-        self.videoCapture.captureSession.beginConfiguration()
-        let currentInput = self.videoCapture.captureSession.inputs.first as? AVCaptureDeviceInput
-        self.videoCapture.captureSession.removeInput(currentInput!)
-        // let newCameraDevice = currentInput?.device == .builtInWideAngleCamera ? getCamera(with: .front) : getCamera(with: .back)
-        
-        let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back)!
-        guard let videoInput1 = try? AVCaptureDeviceInput(device: device) else {
-            return
-        }
-        
-        self.videoCapture.captureSession.addInput(videoInput1)
-        self.videoCapture.captureSession.commitConfiguration()
-    }
-    
-    // share image
-    @IBAction func shareButton(_ sender: Any) {
-        selection.selectionChanged()
-        let bounds = UIScreen.main.bounds
-        //let bounds = self.View0.bounds
-        
-        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
-        self.View0.drawHierarchy(in: bounds, afterScreenUpdates: false)
-        let img = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        let activityViewController = UIActivityViewController(activityItems: [img!], applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.View0
-        self.present(activityViewController, animated: true, completion: nil)
-        // playButton("")
-    }
-    
-    // share screenshot
-    @IBAction func saveScreenshotButton(_ shouldSave: Bool = true) {
-        // let layer = UIApplication.shared.keyWindow!.layer
-        // let scale = UIScreen.main.scale
-        // UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale);
-        // layer.render(in: UIGraphicsGetCurrentContext()!)
-        // let screenshot = UIGraphicsGetImageFromCurrentImageContext()
-        // UIGraphicsEndImageContext()
-        
-        // let screenshot = UIApplication.shared.screenShot
-        // UIImageWriteToSavedPhotosAlbum(screenshot!, nil, nil, nil)
-    }
-    
- //   let maxBoundingBoxViews = 100
+
+    let maxBoundingBoxViews = 100
     var boundingBoxViews = [BoundingBoxView]()
     var colors: [String: UIColor] = [:]
     
     func setUpBoundingBoxViews() {
         // Ensure all bounding box views are initialized up to the maximum allowed.
-        while boundingBoxViews.count < Int(numberOfObjects) {
+        while boundingBoxViews.count < maxBoundingBoxViews {
             boundingBoxViews.append(BoundingBoxView())
         }
         
@@ -414,8 +280,7 @@ class VideoCaptureViewController: UIViewController {
             if self.t1 < 10.0 {  // valid dt
                 self.t2 = self.t1 * 0.05 + self.t2 * 0.95  // smoothed inference time
             }
-            self.t4 = (CACurrentMediaTime() - self.t3) * 0.05 + self.t4 * 0.95  // smoothed delivered FPS
-            self.labelFPS.text = String(format: "%.1f FPS - %.1f ms", 1 / self.t4, self.t2 * 1000)  // t2 seconds to ms
+            self.t4 = (CACurrentMediaTime() - self.t3) * 0.05 + self.t4 * 0.95  // smoothedb
             self.t3 = CACurrentMediaTime()
             
         }
@@ -503,9 +368,9 @@ class VideoCaptureViewController: UIViewController {
         let nanoseconds = calendar.component(.nanosecond, from: date)
         let sec_day = Double(hour) * 3600.0 + Double(minutes) * 60.0 + Double(seconds) + Double(nanoseconds) / 1E9  // seconds in the day
         
-        self.labelSlider.text = String(predictions.count) + " items (max " + String(Int(slider.value)) + ")"
+        
         for i in 0..<boundingBoxViews.count {
-            if i < predictions.count && i < Int(slider.value) {
+            if i < predictions.count && i < Int(numberOfObjects) {
                 let prediction = predictions[i]
                 
                 
@@ -626,12 +491,9 @@ class VideoCaptureViewController: UIViewController {
         case .began: fallthrough
         case .changed:
             update(scale: newScaleFactor)
-            self.labelZoom.text = String(format: "%.2fx", newScaleFactor)
-            self.labelZoom.font = UIFont.preferredFont(forTextStyle: .title2)
         case .ended:
             lastZoomFactor = minMaxZoom(newScaleFactor)
             update(scale: lastZoomFactor)
-            self.labelZoom.font = UIFont.preferredFont(forTextStyle: .body)
         default: break
         }
     }  // Pinch to Zoom Start ------------------------------------------------------------------------------------------

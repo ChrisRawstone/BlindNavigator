@@ -1,54 +1,6 @@
 import SwiftUI
 import MapKit
 import AVFoundation
-
-
-struct MapView: UIViewRepresentable {
-    @ObservedObject var locationManager: LocationManager
-    @Binding var directions: [MKRoute.Step]
-
-    func makeUIView(context: Context) -> MKMapView {
-        let mapView = MKMapView(frame: .zero)
-        mapView.delegate = context.coordinator
-        return mapView
-    }
-
-    func updateUIView(_ mapView: MKMapView, context: Context) {
-        mapView.showsUserLocation = true
-        mapView.userTrackingMode = .followWithHeading
-        updateMapOverlay(from: mapView)
-    }
-    
-    private func updateMapOverlay(from mapView: MKMapView) {
-        mapView.overlays.forEach { mapView.removeOverlay($0) }
-        for step in directions {
-            let polyline = step.polyline
-            mapView.addOverlay(polyline)
-        }
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
-
-    class Coordinator: NSObject, MKMapViewDelegate {
-        var parent: MapView
-
-        init(_ parent: MapView) {
-            self.parent = parent
-        }
-
-        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-            if let polyline = overlay as? MKPolyline {
-                let renderer = MKPolylineRenderer(polyline: polyline)
-                renderer.strokeColor = .blue
-                renderer.lineWidth = 5
-                return renderer
-            }
-            return MKOverlayRenderer()
-        }
-    }
-}
 import CoreLocation
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
@@ -111,15 +63,13 @@ struct GPSContentView: View {
                 TextField("Search for places", text: $searchText, onCommit: search)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-//                MapView(locationManager: locationManager, directions: $locationManager.directions)
+                
                 Map(position: $postion) {
                     if let route {
                                   MapPolyline(route.polyline)
                                       .stroke(.blue, lineWidth: 8)
-                                      // .stroke(gradient, style: stroke)
                               }
                 }
-                
                 
                 Spacer()
             }
@@ -135,7 +85,6 @@ struct GPSContentView: View {
         let search = MKLocalSearch(request: request)
         search.start { response, _ in
             guard let mapItem = response?.mapItems.first else { return }
-          //  self.locationManager.getDirections(to: mapItem)
             self.fetchDirection(to: mapItem)
         }
     }
