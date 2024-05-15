@@ -7,6 +7,10 @@
 
 import Foundation
 
+// A constant list of speech templates
+// this will be used to suffle during each speech
+// so the voice appear more natural than just using only one speech
+// each line containts {1} that will later on be replaced by objects, using replaceByOccurance in string
 let speechTemplates = [
     "Right before you, {1} are present.",
     "Directly ahead, {1} await",

@@ -31,14 +31,20 @@ class VideoCaptureViewController: UIViewController {
     var t2 = 0.0  // inference dt smoothed
     var t3 = CACurrentMediaTime()  // FPS start
     var t4 = 0.0  // FPS dt smoothed
-    // var cameraOutput: AVCapturePhotoOutput!
     
     var currentDestination: String = "" { didSet { print("current destination is \(currentDestination)") } }
     
+    // last appeared objects hold appeared objects for the next speech
+    // doing this allow the speech to only described the lastest objects only
     var lastAppearedObjects: [String] = []
     
+    // this numberOfObjects will hold the number of objects detection allow by the setting
     private var numberOfObjects: Double = 10
+    
+    // timer is used for speech, every 10 seconds
     var timer: Timer?
+    
+    // userDefault is used to save objects that are described by the speech
     private let userDefault = UserDefaults.standard
     
     // Developer mode
@@ -59,16 +65,16 @@ class VideoCaptureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDefaultsValueIfNeeded()
-        setLabels()
         setUpBoundingBoxViews()
         startVideo()
         setModel()
-        hideViews()
         timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(describeObjectsIfNeeded), userInfo: nil, repeats: true)
         
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: .didUpdateSetting, object: nil)
     }
     
+    // This function is meant for setting the default setting
+    // if that has not been before
     func setDefaultsValueIfNeeded() {
         let numbObjects = userDefault.double(forKey: "numberOfObjects")
         let confidence = userDefault.double(forKey: "confidence")
@@ -83,10 +89,6 @@ class VideoCaptureViewController: UIViewController {
         if iouThreshold == 0 {
             userDefault.setValue(0.15, forKey: "threshold")
         }
-    }
-    
-    func hideViews() {
-//        segmentedControl.isHidden = true
     }
     
     @objc func refresh() {
@@ -105,21 +107,29 @@ class VideoCaptureViewController: UIViewController {
     func saveDestination(location: String, objects: [String]) {
         do{
             var destinations: [Destination] = []
+            
+            // check if there are existing dashboard in user default
             if let savedData = userDefault.object(forKey: "dashboard") as? Data {
+                // decode the data into an array of object Destination
                 destinations = try JSONDecoder().decode([Destination].self, from: savedData)
             }
             
+            // check if the location that save has existed in the list
             if let existingIndex = destinations.firstIndex(where: { $0.location == location }) {
+                // if exist, only append the objects to the item
                let exsitingObjects = destinations[existingIndex].objects
                 destinations[existingIndex].objects = exsitingObjects + objects
             } else {
+                // if the location doesnot exist in saved data
+                // add the desitnation into the list, along with objects
                 let newDestination = Destination(location: location, objects: objects)
                 destinations.append(newDestination)
             }
             
+            // encoding the temparory destinations list
             let encodedData = try JSONEncoder().encode(destinations)
             
-           
+            // now set the encoded destination list into the user default to save the data.
             userDefault.set(encodedData, forKey: "dashboard")
             
             print("save destination successfully \(destinations.count) \(destinations)")
@@ -128,17 +138,31 @@ class VideoCaptureViewController: UIViewController {
         }
     }
     
+    // function to describe objects using speech
+    
     @objc func describeObjectsIfNeeded() {
-        let objects = lastAppearedObjects.unique.prefix(10)
+        // get objects from last appeared objects and take only amount of that setting
+        
+        let objects = lastAppearedObjects.unique.prefix(Int(numberOfObjects))
+        
+        // save the destination before speech, if destination is empty, add "Roaming" as destination
         saveDestination(location:  currentDestination.isEmpty ? "Roaming" : currentDestination, objects: Array(objects))
         
+        // join objects using ", " so the speech can speak the objects clearly
+        // otherwise the speech not say the objects correctly
         let text = objects.joined(separator: ", ")
+        
+        // randomize the speech from speech templates
         let randomizedText = speechTemplates.randomElement()?.replacingOccurrences(of: "{1}", with: text)
         
+        // initialize speech utterance
+        // setting language and rate
         let utterance = AVSpeechUtterance(string: randomizedText ?? "")
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         utterance.rate = 0.4
         
+        // check if the speech is busy,
+        // we ignore the speech and wait until next time the speech is available
         if speechSynthesizer.isSpeaking == false {
             speechSynthesizer.speak(utterance)
         }
@@ -146,14 +170,11 @@ class VideoCaptureViewController: UIViewController {
             print("Objects are not desribed due to speechSyn is busy")
         }
         
+        // remove last appeared objects so new one can be observed
         lastAppearedObjects.removeAll()
     }
     
-    @IBAction func vibrate(_ sender: Any) {
-        selection.selectionChanged()
-    }
-
-    
+    // setting up model for YOLO
     func setModel() {
         /// VNCoreMLModel
         let numbObjects = userDefault.double(forKey: "numberOfObjects")
@@ -172,10 +193,6 @@ class VideoCaptureViewController: UIViewController {
         t2 = 0.0 // inference dt smoothed
         t3 = CACurrentMediaTime()  // FPS start
         t4 = 0.0  // FPS dt smoothed
-    }
-    
-    func setLabels() {
-        self.labelVersion.text = "Version "
     }
 
     let maxBoundingBoxViews = 100

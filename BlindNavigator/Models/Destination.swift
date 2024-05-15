@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Destination struct
 struct Destination: Codable {
     let location: String // Descriptive location name
     var objects: [String] // Array of captured object names
