@@ -1,6 +1,16 @@
+
+
+
+https://github.com/ChrisRawstone/BlindNavigator/assets/52676332/083b53db-8900-4a96-9da5-5b24230da612
+
+
+
+# BlindNavigator
+
+# Description
+A navigation app with real-time object detection for blind people! 
+
 #Github link: https://github.com/ChrisRawstone/BlindNavigator
-
-
 
 # Table of Contents
 1. [Description](#description)
@@ -9,10 +19,7 @@
 4. [Structure](#structure)
 5. [How to run](#How-to-run)
 
-# BlindNavigator
 
-# Description
-A navigation app with real-time object detection for blind people! 
 
 # Getting started
 
